@@ -9,12 +9,8 @@ export const UserProvider = ({ children }) => {
     const [editingUser, setEditingUser] = useState(null);
 
     const fetchUsers = async () => {
-        const token = localStorage.getItem('token');
         try {
-            const response = await axios.get('http://localhost:5000/api/users', {
-                headers: {
-                    Authorization: 'Bearer ' + token,
-                },
+            const response = await axios.get('http://localhost:8080/api/users/find/all', {
             });
             setUsers(response.data);
         } catch (error) {
@@ -25,7 +21,7 @@ export const UserProvider = ({ children }) => {
     const handleDelete = async (userId) => {
         const token = localStorage.getItem('token');
         try {
-            await axios.delete(`http://localhost:5000/api/users/${userId}`, {
+            await axios.delete(`http://localhost:8080/api/users/find/all/${userId}`, {
                 headers: {
                     Authorization: 'Bearer ' + token,
                 },

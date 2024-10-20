@@ -2,12 +2,12 @@
 
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Register from './Components/UserForm';
-import Login from './Components/Login';
-import UserList from './Components/UserList';
+import Navbar from './Components/Navbar/Navbar';
+import Register from './Components/UserForm/UserForm';
+import Login from './Components/Login/Login';
+import UserList from './Components/UserList/UserList';
 import { UserProvider } from './Context/UserContext'; 
-import Home from './Components/Home';
+import Home from './Components/Home/Home';
 
 const App = () => {
   return (

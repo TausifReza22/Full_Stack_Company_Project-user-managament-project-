@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
-import { useUserContext } from '../Context/UserContext'; // Import useUserContext
-import EditUser from './EditUser'; // Importing the EditUser component
+import { useUserContext } from '../../Context/UserContext'; // Import useUserContext
+import EditUser from '../EditUser/EditUser'; // Importing the EditUser component
 import './UserList.css'; // Import the CSS file
 
 const UserList = () => {
@@ -18,6 +18,7 @@ const UserList = () => {
             <div className="user-info">
               <h3 className="user-name">{user.name}</h3>
               <p className="user-email">Email: {user.email}</p>
+              <p className="user-email">Mobile: {user.mobile}</p>
             </div>
             <div className="user-actions">
               <FaEdit 

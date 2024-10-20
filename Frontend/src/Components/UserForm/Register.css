@@ -12,7 +12,8 @@
     background-size: 100% 100%;
 }
 
-.register-card { /* New class for the card */
+.register-card {
+    /* New class for the card */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,7 +24,8 @@
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    text-align: center; /* Center the text within the card */
+    text-align: center;
+    /* Center the text within the card */
 }
 
 .register-title {
@@ -66,4 +68,21 @@
 
 .register-button:hover {
     background-color: #0056b3;
+}
+
+.password-container {
+    position: relative;
+}
+
+.password-input {
+    padding-right: 40px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 40%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 2rem;
 }

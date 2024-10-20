@@ -1,13 +1,13 @@
 import express from 'express';
 import { registerUser, loginUser, getAllUsers, updateUser, deleteUser } from '../controllers/userController.js';
-import {verifyToken} from '../middleware/authenticate.js';
+import {verifyToken} from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
 router.post('/register', registerUser);
 router.post('/login', loginUser);
-router.get('/users', verifyToken, getAllUsers);
-router.put('/users/:id', verifyToken, updateUser);
-router.delete('/users/:id', verifyToken, deleteUser);
+router.get('/find/all', getAllUsers);
+router.put('/update/:id', verifyToken, updateUser);
+router.delete('/delete/:id', verifyToken, deleteUser);
 
 export default router;

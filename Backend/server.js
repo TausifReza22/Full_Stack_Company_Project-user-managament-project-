@@ -3,10 +3,13 @@ import mongoose from 'mongoose';
 import userRoutes from './routes/userRoutes.js';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 const app = express();
 app.use(express.json());
+app.use(cookieParser());
+
 const corsOptions = {
     origin: true,
     optionsSuccessStatus: 200,

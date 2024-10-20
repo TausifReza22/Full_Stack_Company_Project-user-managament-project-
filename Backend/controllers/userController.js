@@ -1,7 +1,7 @@
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import User from '../models/User.js';
-import { createToken } from '../middleware/authenticate.js';
+import User from '../models/userModel.js';
+import { createToken } from '../middleware/authMiddleware.js';
 
 // Register User
 const registerUser = async (req, res) => {
@@ -12,7 +12,7 @@ const registerUser = async (req, res) => {
     if (userExists) return res.status(400).json({ message: 'User already exists' });
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({ name, email, password: hashedPassword });
+    const user = new User({ name, email, password: hashedPassword, mobile });
     await user.save();
     res.status(201).json({ user });
   } catch (err) {
@@ -25,16 +25,21 @@ const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const user = await User.findOne({ email });
-    if (!user) return res.status(400).json({ message: 'User not found' });
+    // Check if user exists
+    let user = await User.findOne({ email });
+    if (!user) {
+      res.status(400).json("Invalid Email. Please check..")
+    }
 
+    // Check if password matches
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ message: 'Invalid credentials' });
-
-    const token = createToken(user);
-    res.cookie('token', token);
-
-    res.status(200).json({ user, token });
+    if (isMatch) {
+      const token = createToken(user)
+      res.cookie('token', token)
+      res.status(200).json({ message: "user login successfully..", user, token })
+    } else {
+      res.status(400).json("invalid password..")
+    }
   } catch (err) {
     res.status(500).json({ message: 'Error logging in' });
   }
@@ -52,16 +57,30 @@ const getAllUsers = async (req, res) => {
 
 // Update user
 const updateUser = async (req, res) => {
+  const { name, email, password, mobile } = req.body;
   try {
-    if (req.user.id !== req.params.id) {
-      return res.status(403).json({ message: 'You can only edit your own data' });
+    // Find the existing user by ID
+    const existingUser = await User.findById(req.params.id);
+    if (!existingUser) {
+      return res.status(404).json({ message: 'User not found' });
     }
 
-    const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    if (!user) return res.status(404).json({ message: 'User not found' });
+    // Update user fields
+    if (name) existingUser.name = name;
+    if (email) existingUser.email = email;
+    if (mobile) existingUser.mobile = mobile;
+    if (password) {
+      // Hash the password if provided
+      existingUser.password = await bcrypt.hash(password, 10);
+    }
 
-    res.status(200).json(user);
+    // Save the updated user
+    const updatedUser = await existingUser.save();
+
+    // Send back the updated user data
+    res.status(200).json(updatedUser);
   } catch (err) {
+    console.error(err); // Log error for debugging
     res.status(500).json({ message: 'Error updating user' });
   }
 };

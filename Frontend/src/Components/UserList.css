@@ -1,0 +1,96 @@
+/* src/components/UserList.css */
+
+.user-list-container {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl24twHHhuXbnQUi6rjcg-KSG7fMHoZJjh_Q&s'); /* Image in public folder */
+
+    padding: 20px;
+    background-color: black; /* Light background color */
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center content horizontally */
+  }
+  
+  .user-list-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: white;
+  }
+  
+  .user-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the cards */
+    gap: 20px; /* Space between cards */
+  }
+  
+  .user-card {
+    background-color: #fff; /* White background for the card */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px; /* Internal padding */
+    width: calc(33.33% - 20px); /* Three cards in a row with space */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.2s; /* Smooth scaling */
+  }
+  
+  .user-card:hover {
+    transform: scale(1.02); /* Scale up on hover */
+  }
+  
+  .user-info {
+    margin-bottom: 15px; /* Space between info and actions */
+  }
+  
+  .user-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333; /* Darker text color */
+  }
+  
+  .user-email {
+    color: #666; /* Lighter text color for email */
+  }
+  
+  .user-actions {
+    display: flex;
+    justify-content: flex-end; /* Align actions to the right */
+  }
+  
+  .edit-icon,
+  .delete-icon {
+    font-size: 20px; /* Icon size */
+    margin-left: 10px; /* Space between icons */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: color 0.2s; /* Smooth color transition */
+  }
+  
+  .edit-icon:hover {
+    color: blue; /* Change color on hover */
+  }
+  
+  .delete-icon:hover {
+    color: red; /* Change color on hover */
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .user-card {
+      width: calc(50% - 20px); /* Two cards in a row for tablets */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .user-card {
+      width: calc(100% - 20px); /* One card in a row for mobile */
+    }
+  }
+  
+  /* Centering EditUser form */
+  .edit-user-container {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center horizontally */
+    margin-top: 20px; /* Space above the form */
+  }
+  

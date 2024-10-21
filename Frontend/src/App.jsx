@@ -8,6 +8,7 @@ import Login from './Components/Login/Login';
 import UserList from './Components/UserList/UserList';
 import { UserProvider } from './Context/UserContext'; 
 import Home from './Components/Home/Home';
+import { ToastContainer } from 'react-toastify';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/users" element={<UserList/>} />
         </Routes>
       </Router>
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop={false} closeOnClick pauseOnFocusLoss draggable pauseOnHover />
     </UserProvider>
   );
 };

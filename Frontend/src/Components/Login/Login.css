@@ -1,4 +1,4 @@
-/* src/components/Login.css */
+
 
 .login-container {
     display: flex;
@@ -7,13 +7,11 @@
     justify-content: center;
     height: 100vh;
     background-color: #f4f7fc;
-    /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW-JOGz1hkctFUvU0EKoeW6u2rzEMPXL7UuQ&s'); */
-    /* background-repeat: no-repeat; */
-    /* background-size: 100% 100%; */
+    
     background-color: antiquewhite;
 }
 
-.login-card { /* New class for the card */
+.login-card { 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,8 +22,8 @@
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    text-align: center; /* Center the text within the card */
-    margin-top: -50px; /* Adjust this value to shift the card higher */
+    text-align: center;
+    margin-top: -50px;
 }
 
 .login-title {

@@ -1,30 +1,31 @@
-// src/components/Login.js
-
 import React, { useState } from 'react';
 import axios from 'axios';
+import { toast } from 'react-toastify';  // Import Toastify
+import 'react-toastify/dist/ReactToastify.css';  // Import Toastify CSS
 import './Login.css'; // Import the CSS file for styling
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
- // src/components/Login.js
-const handleLogin = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     try {
-        const response = await axios.post('http://localhost:8080/api/users/login', {
-            email,
-            password,
-        });
-        
-        // Save the token to local storage
-        localStorage.setItem('token', response.data.token); // Ensure this line is present
-        alert(`Login successful: ${response.data.token}`);
-    } catch (error) {
-        alert(`Login failed: ${error.response.data.message}`);
-    }
-};
+      const response = await axios.post('http://localhost:8080/api/users/login', {
+        email,
+        password,
+      });
+      
+      // Save the token to local storage
+      localStorage.setItem('token', response.data.token);
 
+      // Display success toast notification
+      toast.success('Login successful 😊');
+    } catch (error) {
+      // Display error toast notification
+      toast.error(`Login failed: ${error.response?.data?.message || error.message}`);
+    }
+  };
 
   return (
     <div className="login-container">

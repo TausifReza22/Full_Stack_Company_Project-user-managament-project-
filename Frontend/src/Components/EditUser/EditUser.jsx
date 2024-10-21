@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useUserContext } from '../../Context/UserContext';
+import { toast } from 'react-toastify';  // Import Toastify
+import 'react-toastify/dist/ReactToastify.css';  // Import Toastify CSS
 import './Edit.css'; // Import the CSS file
 
 const EditUser = () => {
@@ -24,10 +26,12 @@ const EditUser = () => {
                 headers: { Authorization: `Bearer ${token}` } // Make sure to include the token in headers
             });
             
-            alert(`Updated logged IN user data 😊`);
+            // Show success toast notification
+            toast.success('User updated successfully 😊');
             closeEditModal();
         } catch (error) {
-            alert(`Error updating user: ${error.response?.data?.message || error.message}`);
+            // Show error toast notification
+            toast.error(`${error.response?.data?.message || error.message}`);
         }
     };
     

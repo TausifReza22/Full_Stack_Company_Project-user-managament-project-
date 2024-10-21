@@ -1,44 +1,70 @@
-/* Home.css */
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 .name-container {
-    /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5dWhyF9ATR_Ezu5Tdmq3zhWnkfhJO80S9WA&s'); */
-    background-size: cover;
-    background-position: center;
-    height: 89vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    border: 1px solid red;
-    background-color: antiquewhite;
-  }
-  
+  background-size: cover;
+  background-position: center;
+  height: 89vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  background-color: antiquewhite;
+}
+
+.cdd-text {
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  font-size: 4rem;
+  width: 50%;
+  height: auto;
+}
+
+.btn {
+  margin-top: 20px;
+  text-align: center;
+  background-color: #1e40af;
+  font-size: 1.5rem;
+  padding: 20px 50px;
+  width: 250px;
+  height: 60px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #1c64f2;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
   .cdd-text {
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Shadow for better visibility */
-    font-size: 4rem; /* Increased font size */
-    width: 50%; /* Width of the heading */
-    height: auto; /* Auto height for text */
+    font-size: 2.5rem;
+    width: 80%;
   }
-  
+
   .btn {
-    margin-top: 20px;
-    text-align: center;
-    background-color: #1e40af; /* Darker blue background */
-    font-size: 1.5rem; /* Increased font size */
-    padding: 20px 50px; /* Increased padding for height and width */
-    width: 250px; /* Fixed width for button */
-    height: 60px; /* Fixed height for button */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
-    transition: background-color 0.3s ease;
+    font-size: 1.2rem;
+    padding: 15px 40px;
+    width: 200px;
+    height: 50px;
   }
-  
-  button:hover {
-    background-color: #1c64f2; /* Slightly brighter on hover */
+}
+
+@media (max-width: 480px) {
+  .cdd-text {
+    font-size: 2rem;
+    width: 90%;
   }
-  
+
+  .btn {
+    font-size: 1rem;
+    padding: 10px 30px;
+    width: 180px;
+    height: 45px;
+  }
+}

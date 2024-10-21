@@ -7,9 +7,10 @@
     justify-content: center;
     height: 100vh;
     background-color: #f4f7fc;
-    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW-JOGz1hkctFUvU0EKoeW6u2rzEMPXL7UuQ&s');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+    /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW-JOGz1hkctFUvU0EKoeW6u2rzEMPXL7UuQ&s'); */
+    /* background-repeat: no-repeat; */
+    /* background-size: 100% 100%; */
+    background-color: antiquewhite;
 }
 
 .login-card { /* New class for the card */

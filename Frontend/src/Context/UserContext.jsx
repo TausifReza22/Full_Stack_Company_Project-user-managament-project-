@@ -18,19 +18,30 @@ export const UserProvider = ({ children }) => {
         }
     };
 
-    const handleDelete = async (userId) => {
-        const token = localStorage.getItem('token');
-        try {
-            await axios.delete(`http://localhost:8080/api/users/find/all/${userId}`, {
-                headers: {
-                    Authorization: 'Bearer ' + token,
-                },
-            });
-            setUsers(users.filter(user => user._id !== userId));
-        } catch (error) {
-            alert(`Error deleting user: ${error.response?.data?.message || error.message}`);
-        }
-    };
+   const handleDelete = async (userId) => {
+    const token = localStorage.getItem('token'); // Make sure this line is present
+
+    // Log the token to see if it's retrieved correctly
+    console.log("Token for delete:", token);
+
+    if (!token) {
+        alert('No token found, please log in again.');
+        return; // Prevent further execution if token is missing
+    }
+
+    try {
+        await axios.delete(`http://localhost:8080/api/users/delete/${userId}`, {
+            headers: {
+                Authorization: `Bearer ${token}`, // Include token here
+            },
+        });
+        setUsers(users.filter(user => user._id !== userId));
+        alert('User deleted successfully');
+    } catch (error) {
+        alert(`Error deleting user: ${error.response?.data?.message || error.message}`);
+    }
+};
+
 
     const handleEdit = (user) => {
         setEditingUser(user);

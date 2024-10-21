@@ -1,20 +1,21 @@
 /* src/components/UserList.css */
 
 .user-list-container {
-    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl24twHHhuXbnQUi6rjcg-KSG7fMHoZJjh_Q&s'); /* Image in public folder */
-
+    /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl24twHHhuXbnQUi6rjcg-KSG7fMHoZJjh_Q&s');  */
+    background-color: antiquewhite;
     padding: 20px;
-    background-color: black; /* Light background color */
+    /* background-color: black; */
     display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center; /* Center content horizontally */
+    flex-direction: column; 
+    align-items: center;
+    height: 89vh;
   }
   
   .user-list-title {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
-    color: white;
+    color: rgb(65, 63, 63);
   }
   
   .user-cards {

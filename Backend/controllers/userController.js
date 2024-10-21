@@ -58,7 +58,13 @@ const getAllUsers = async (req, res) => {
 // Update user
 const updateUser = async (req, res) => {
   const { name, email, password, mobile } = req.body;
+  
   try {
+    // Check if the logged-in user is trying to update their own account
+    if (req.user.email._id !== req.params.id) {
+      return res.status(403).json({ message: 'Only update your own account. login user' });
+    }
+
     // Find the existing user by ID
     const existingUser = await User.findById(req.params.id);
     if (!existingUser) {
@@ -88,9 +94,24 @@ const updateUser = async (req, res) => {
 // Delete user
 const deleteUser = async (req, res) => {
   try {
-    await User.findByIdAndDelete(req.params.id);
-    res.status(200).json({ message: 'User deleted' });
+    // Check if the logged-in user is trying to delete their own account
+    if (req.user.email._id !== req.params.id) {
+      return res.status(403).json({ message: 'Only delete your own account. login user' });
+    }
+
+    // Find the user by ID and delete
+    const deletedUser = await User.findByIdAndDelete(req.params.id);
+
+    // Check if the user was found and deleted
+    if (!deletedUser) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Respond with a success message
+    res.status(200).json({ message: 'User deleted successfully' });
   } catch (err) {
+    // Handle errors
+    console.error('Error deleting user:', err);
     res.status(500).json({ message: 'Error deleting user' });
   }
 };

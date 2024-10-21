@@ -8,21 +8,23 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = async (e) => {
+ // src/components/Login.js
+const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8080/api/users/login', {
-        email,
-        password,
-      });
-      
-      // Save the token to local storage
-      localStorage.setItem('token', response.data.token);
-      alert(`Login successful: ${response.data.token}`);
+        const response = await axios.post('http://localhost:8080/api/users/login', {
+            email,
+            password,
+        });
+        
+        // Save the token to local storage
+        localStorage.setItem('token', response.data.token); // Ensure this line is present
+        alert(`Login successful: ${response.data.token}`);
     } catch (error) {
-      alert(`Login failed: ${error.response.data.message}`);
+        alert(`Login failed: ${error.response.data.message}`);
     }
-  };
+};
+
 
   return (
     <div className="login-container">
